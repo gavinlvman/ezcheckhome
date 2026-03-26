@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>驗樓易 EZ Check Home｜新樓驗樓・即時報價比較</title>
+  <title>驗樓易 HomeCheck HK｜新樓驗樓・即時報價比較</title>
   <meta name="description" content="全港專業驗樓師一鍵配對，免費獲取報價。新樓驗樓首選平台，即時比較多位驗樓師報價。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -259,6 +259,26 @@
     .btn-secondary:hover {
       background: rgba(255,255,255,0.25);
       transform: translateY(-2px);
+    }
+    .btn-orange {
+      display: block;
+      width: 100%;
+      background: var(--orange);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .btn-orange:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245, 146, 31, 0.4);
     }
     .hero-stats {
       display: flex;
@@ -762,13 +782,18 @@
     }
     .testimonial-author-info strong {
       display: block;
-      color: white;
+      color: #ffffff;
       font-size: 15px;
       font-weight: 700;
     }
     .testimonial-author-info span {
       font-size: 13px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.8);
+    }
+    .testimonial-property {
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      margin-bottom: 8px;
     }
     .testimonial-stars {
       color: var(--gold);
@@ -1265,7 +1290,7 @@
     <div class="nav-logo-icon">驗</div>
     <div class="nav-logo-text">
       <span class="nav-logo-cn">驗樓易</span>
-      <span class="nav-logo-en">EZ Check Home</span>
+      <span class="nav-logo-en">HomeCheck HK</span>
     </div>
   </div>
   <a href="#inquiry-form" class="nav-cta">免費配對驗樓師</a>
@@ -1631,7 +1656,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-brand-name">驗樓易</div>
-      <div class="footer-brand-en">EZ Check Home</div>
+      <div class="footer-brand-en">HomeCheck HK</div>
       <p class="footer-brand-desc">驗樓易致力為香港新樓買家提供最可靠、最方便的驗樓師配對服務。我們相信每位買家都應該得到專業的驗樓保障，讓你安心收樓。</p>
       <div class="footer-contact">
         <div class="footer-contact-item">📧 info@homecheck.hk</div>
@@ -1662,7 +1687,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copyright">© 2026 驗樓易 EZ Check Home。版權所有。</div>
+    <div class="footer-copyright">© 2026 驗樓易 HomeCheck HK。版權所有。</div>
     <div class="footer-legal">
       <a href="privacy.html">私隱政策</a>
       <a href="terms.html">服務條款</a>
@@ -1858,7 +1883,7 @@
 
   function downloadChecklist() {
     // Generate a simple PDF-like content
-    const content = `驗樓易 EZ Check Home
+    const content = `驗樓易 HomeCheck HK
 新樓驗樓必check 20點清單
 =====================================
 
@@ -1884,7 +1909,7 @@
 20. 整體單位尺寸核對圖則
 
 =====================================
-© 2026 驗樓易 EZ Check Home
+© 2026 驗樓易 HomeCheck HK
 info@homecheck.hk`;
 
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
