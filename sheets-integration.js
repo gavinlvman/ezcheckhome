@@ -338,7 +338,7 @@ function renderInspectors(inspectors) {
         <span class="stars">${'⭐'.repeat(Math.round(inspector.rating))}</span>
         <span class="rating-value">${inspector.rating}</span>
       </div>
-      <button class="btn-secondary" onclick="window.location.href='https://wa.me/85265572551?text=我想配對 ${encodeURIComponent(inspector.name)} 驗樓師'">查詢報價</button>
+      <button class="btn-orange" onclick="window.location.href='https://wa.me/85265572551?text=我想配對 ${encodeURIComponent(inspector.name)} 驗樓師'">查詢報價</button>
     `;
     
     container.appendChild(card);
@@ -366,12 +366,18 @@ function renderTestimonials(testimonials) {
     
     slide.innerHTML = `
       <div class="testimonial-card">
-        <div class="testimonial-header">
-          <h4>${testimonial.name}</h4>
-          <span class="property">${testimonial.property}</span>
+        <div class="testimonial-inner">
+          <div class="testimonial-quote">\"</div>
+          <p class="testimonial-text">${testimonial.comment}</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">${testimonial.name.charAt(0)}</div>
+            <div class="testimonial-author-info">
+              <strong>${testimonial.name}</strong>
+              <span class="testimonial-property">${testimonial.property}</span>
+              <div class="testimonial-stars">${stars}</div>
+            </div>
+          </div>
         </div>
-        <div class="testimonial-rating">${stars}</div>
-        <p class="testimonial-text">"${testimonial.comment}"</p>
       </div>
     `;
     
