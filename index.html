@@ -42,6 +42,8 @@
       --shadow-lg: 0 8px 40px rgba(26,43,76,0.16);
       --radius: 12px;
       --radius-lg: 20px;
+      --glass: rgba(255, 255, 255, 0.9);
+      --glass-dark: rgba(26, 43, 76, 0.85);
     }
 
     /* ===== ANIMATIONS ===== */
@@ -150,10 +152,15 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('hero-bg.webp');
+      background-image: url('images/hero-bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      transform: scale(1.05);
+      transition: transform 10s ease;
+    }
+    .hero:hover .hero-bg {
+      transform: scale(1);
     }
     .hero-overlay {
       position: absolute;
@@ -549,7 +556,25 @@
     }
 
     /* ===== ADVANTAGES SECTION ===== */
-    .advantages-section { background: white; }
+    .advantages-section { 
+      position: relative;
+      background-image: url('images/section-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 100px 24px;
+    }
+    .advantages-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.92);
+      z-index: 0;
+    }
+    .advantages-section .container {
+      position: relative;
+      z-index: 1;
+    }
     .advantages-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -845,17 +870,35 @@
 
     /* ===== FORM SECTION ===== */
     .form-section {
-      background: var(--gray-50);
-      padding: 80px 24px;
+      position: relative;
+      background-image: url('images/cta-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 100px 24px;
     }
+    .form-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 43, 76, 0.9), rgba(36, 55, 96, 0.85));
+      z-index: 0;
+    }
+    .form-section .container {
+      position: relative;
+      z-index: 1;
+    }
+    .form-section .section-title { color: white; }
+    .form-section .section-desc { color: rgba(255, 255, 255, 0.8); }
     .form-wrapper {
       max-width: 680px;
       margin: 0 auto;
-      background: white;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
       border-radius: var(--radius-lg);
       padding: 48px;
       box-shadow: var(--shadow-lg);
-      border: 1px solid var(--gray-200);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     @media (max-width: 600px) {
       .form-wrapper { padding: 28px 20px; }
@@ -1802,32 +1845,15 @@
   });
 
   // ===== CAROUSEL =====
-  let currentSlide = 0;
-  const totalSlides = 3;
-  const track = document.getElementById('carouselTrack');
-  const dots = document.querySelectorAll('.carousel-dot');
-  let autoplayInterval;
-
-  function goToSlide(index) {
-    currentSlide = index;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
-    });
-  }
-
+  // Carousel logic is now handled in sheets-integration.js to support dynamic data.
   function changeSlide(direction) {
-    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-    goToSlide(currentSlide);
-    resetAutoplay();
+    // This function is called by the prev/next buttons in index.html
+    // It will be intercepted or handled by the initialized carousel in sheets-integration.js
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    if (direction > 0 && nextBtn) nextBtn.click();
+    if (direction < 0 && prevBtn) prevBtn.click();
   }
-
-  function resetAutoplay() {
-    clearInterval(autoplayInterval);
-    autoplayInterval = setInterval(() => changeSlide(1), 5000);
-  }
-
-  autoplayInterval = setInterval(() => changeSlide(1), 5000);
 
   // ===== FAQ =====
   function toggleFaq(btn) {
