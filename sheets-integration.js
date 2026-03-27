@@ -389,6 +389,7 @@ function initializeCarousel() {
   const track = document.getElementById('carouselTrack');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const carouselContainer = document.querySelector('.testimonials-carousel');
   
   if (!track || !prevBtn || !nextBtn) {
     console.warn('輪播元素未找到');
@@ -398,35 +399,69 @@ function initializeCarousel() {
   let currentIndex = 0;
   const slides = track.querySelectorAll('.carousel-slide');
   const totalSlides = slides.length;
+  let autoplayInterval;
+  let isPaused = false;
 
   if (totalSlides === 0) {
     console.warn('沒有找到輪播幻燈片');
     return;
   }
 
+  // 設置平滑過渡效果
+  track.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+
   function updateCarousel() {
     const offset = -currentIndex * 100;
     track.style.transform = `translateX(${offset}%)`;
+    
+    // 更新導航點（如果有的話）
+    const dots = document.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      if (!isPaused) {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+      }
+    }, 8000); // 延長至 8 秒，讓讀者有充足時間閱讀
+  }
+
+  function stopAutoplay() {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+    }
   }
 
   prevBtn.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateCarousel();
+    startAutoplay(); // 點擊後重置計時器
   });
 
   nextBtn.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateCarousel();
+    startAutoplay(); // 點擊後重置計時器
   });
 
-  // 自動輪播（每 5 秒）
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateCarousel();
-  }, 5000);
+  // 滑鼠懸停暫停功能
+  if (carouselContainer) {
+    carouselContainer.addEventListener('mouseenter', () => {
+      isPaused = true;
+    });
+    carouselContainer.addEventListener('mouseleave', () => {
+      isPaused = false;
+    });
+  }
 
-  // 初始化輪播位置
+  // 初始化輪播
   updateCarousel();
+  startAutoplay();
 }
 
 // 定期刷新數據（每 30 秒）
