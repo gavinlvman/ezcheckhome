@@ -11,29 +11,29 @@ const TESTIMONIALS_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}
 // 備用硬編碼數據（當 CSV 加載失敗時使用）
 const FALLBACK_INSPECTORS = [
   {
-    name: '李明師傅',
+    name: 'Peter 哥',
     years: 12,
     count: 450,
-    qualification: '認證驗樓師',
-    imageUrl: 'https://via.placeholder.com/200?text=李明師傅',
+    qualification: '資深認證驗樓師',
+    imageUrl: 'https://via.placeholder.com/200?text=Peter',
     isStar: true,
     rating: 4.9
   },
   {
-    name: '王建華',
+    name: 'John 師傅',
     years: 8,
     count: 280,
-    qualification: '認證驗樓師',
-    imageUrl: 'https://via.placeholder.com/200?text=王建華',
+    qualification: '專業驗樓工程師',
+    imageUrl: 'https://via.placeholder.com/200?text=John',
     isStar: true,
     rating: 4.8
   },
   {
-    name: '陳偉康',
+    name: 'Mary 姐',
     years: 15,
     count: 520,
-    qualification: '認證驗樓師',
-    imageUrl: 'https://via.placeholder.com/200?text=陳偉康',
+    qualification: '認證驗樓專家',
+    imageUrl: 'https://via.placeholder.com/200?text=Mary',
     isStar: true,
     rating: 4.9
   },
@@ -68,40 +68,34 @@ const FALLBACK_INSPECTORS = [
 
 const FALLBACK_TESTIMONIALS = [
   {
-    name: '陳太太',
-    property: '日出康城',
+    name: '陳先生 & 太太',
+    property: '新婚夫婦・日出康城',
     rating: 5,
-    comment: '李師傅非常專業，驗樓過程中發現了多個隱藏問題，讓我們能夠及時跟進。強烈推薦！'
+    comment: '我和太太首次置業，對驗樓完全是零經驗，幸好有「驗樓易」幫忙！驗樓師 Peter 哥超細心，連牆角的小裂縫、窗邊的膠條老化都一一指出來，還教我們很多保養小貼士。整個過程很專業，報告也寫得很詳細，讓我們收樓收得好安心！強烈推薦給所有新婚夫婦！'
   },
   {
-    name: '王先生',
-    property: 'YOHO WEST',
+    name: '投資者 王先生',
+    property: '資深投資者・YOHO WEST',
     rating: 5,
-    comment: '整個配對過程非常快速，王師傅的報告詳細清晰，幫助我們了解新樓的真實狀況。'
+    comment: '作為一名資深物業投資者，時間就是金錢。「驗樓易」的配對效率很高，很快就安排了經驗豐富的 John 師傅。他不僅驗樓速度快，而且對新樓常見問題瞭如指掌，提出的修繕建議也很到位。報告簡潔明瞭，讓我能迅速與發展商溝通，節省了不少寶貴時間。下次投資新盤，還會找他們。'
   },
   {
-    name: '李女士',
-    property: '啟德發展區',
-    rating: 4,
-    comment: '驗樓師非常細心，提供了很多有用的建議。整個服務流程很順暢，值得推薦。'
-  },
-  {
-    name: '黃先生',
-    property: '親海駅',
+    name: '首置青年 阿樂',
+    property: '首置人士・啟德發展區',
     rating: 5,
-    comment: '平台的配對服務很高效，陳師傅的專業知識讓我們對新樓充滿信心。'
+    comment: '第一次買樓，心情既興奮又緊張，最怕就是收樓時遇到問題。透過「驗樓易」找到的 Mary 師傅人很好，很有耐性地解釋每個檢測項目，讓我這個新手也能明白。她發現了一些水電的小瑕疵，幸好及早發現並要求發展商修復，讓我住得更安心。真的很感謝「驗樓易」，幫我省去了很多煩惱！'
   },
   {
-    name: '張太太',
-    property: '大圍柏傲莊',
+    name: '換樓家庭 梁生',
+    property: '換樓家庭・大圍柏傲莊',
     rating: 5,
-    comment: '非常感謝驗樓易的推薦，劉師傅的驗樓報告非常詳細，幫助我們做出了正確的決定。'
+    comment: '我們一家四口換了個大單位，對居住品質要求更高。選擇「驗樓易」是因為他們口碑不錯，而且價格透明。驗樓師的服務非常到位，不僅仔細檢查了每個房間，還特別留意了廚房和浴室的防水問題。報告出來後，我們對新家的狀況一目了然，覺得這筆驗樓費花得很值得，性價比很高！'
   },
   {
-    name: '周先生',
-    property: '九龍灣新盤',
-    rating: 4,
-    comment: '整個過程很專業，驗樓師發現了幾個需要跟進的問題，非常有幫助。'
+    name: '退休人士 張伯',
+    property: '退休人士・九龍灣新盤',
+    rating: 5,
+    comment: '我年紀大了，對新科技不太懂，但「驗樓易」的客服很有耐心，一步步教我如何預約。驗樓師準時到達，態度和藹，檢查得很仔細。雖然有些小問題，但都及時發現並記錄下來。整個服務過程很順暢，讓我這個老人家也覺得很方便、很放心。'
   }
 ];
 
