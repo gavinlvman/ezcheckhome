@@ -1508,11 +1508,11 @@
         <!-- 動態評價將在此生成 -->
       </div>
       <div class="carousel-controls">
-        <button class="carousel-btn" id="prevBtn" onclick="changeSlide(-1)">&#8592;</button>
+        <button class="carousel-btn" id="prevBtn">&#8592;</button>
         <div class="carousel-dots" id="carouselDots">
           <!-- 動態指示點將在此生成 -->
         </div>
-        <button class="carousel-btn" id="nextBtn" onclick="changeSlide(1)">&#8594;</button>
+        <button class="carousel-btn" id="nextBtn">&#8594;</button>
       </div>
     </div>
   </div>
@@ -1873,15 +1873,7 @@
   });
 
   // ===== CAROUSEL =====
-  // Carousel logic is now handled in sheets-integration.js to support dynamic data.
-  function changeSlide(direction) {
-    // This function is called by the prev/next buttons in index.html
-    // It will be intercepted or handled by the initialized carousel in sheets-integration.js
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    if (direction > 0 && nextBtn) nextBtn.click();
-    if (direction < 0 && prevBtn) prevBtn.click();
-  }
+  // Carousel logic is now fully handled in sheets-integration.js to support dynamic data and prevent conflicts.
 
   // ===== FAQ =====
   function toggleFaq(btn) {
