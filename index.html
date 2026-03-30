@@ -1774,7 +1774,7 @@
     <div id="modalForm">
       <div class="modal-icon">📋</div>
       <h3 class="modal-title">免費下載驗樓清單</h3>
-      <p class="modal-desc">輸入你的姓名及電郵，即可免費下載「新樓驗樓必check 20點」PDF清單</p>
+      <p class="modal-desc">輸入你的姓名及電郵，即可免費下載「EZ Home Check 專業驗樓清單」PDF</p>
       <div class="form-group">
         <label class="form-label" for="modalName">姓名<span class="required">*</span></label>
         <input type="text" class="form-input" id="modalName" placeholder="例：陳大文" />
@@ -1789,7 +1789,7 @@
     <div class="modal-download" id="modalDownload">
       <div class="modal-download-icon">✅</div>
       <h3 class="modal-download-title">清單已準備好！</h3>
-      <p class="modal-download-desc">感謝你下載！以下是你的「新樓驗樓必check 20點」PDF清單</p>
+      <p class="modal-download-desc">感謝你下載！以下是您的「EZ Home Check 專業驗樓清單」PDF</p>
       <button class="btn-download" onclick="downloadChecklist()">
         ⬇️ 下載 PDF 清單
       </button>
@@ -1928,45 +1928,12 @@
   }
 
   function downloadChecklist() {
-    // Generate a simple PDF-like content
-    const content = `EZ Home Check
-新樓驗樓必check 20點清單
-=====================================
-
-1. 牆身有否裂縫或滲水痕跡
-2. 地板磁磚有否空心或破損
-3. 窗框密封情況及開關是否順暢
-4. 廚房及浴室防水層測試
-5. 電掣及插座功能正常
-6. 冷氣機安裝及運作測試
-7. 天花板有否滲水或裂縫
-8. 門框及門鎖安裝是否穩固
-9. 廁所去水是否暢通
-10. 廚房水喉及去水測試
-11. 浴室花灑及水龍頭測試
-12. 窗戶玻璃有否破損或花痕
-13. 牆身批盪是否平整
-14. 地板水平度測試
-15. 電箱及斷路器功能正常
-16. 對講機及門鐘功能測試
-17. 信箱及公共設施鎖匙測試
-18. 露台或工作平台防水測試
-19. 天台或頂層單位隔熱測試
-20. 整體單位尺寸核對圖則
-
-=====================================
-© 2026 EZ Home Check
-info@ezhomecheck.hk`;
-
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = 'EZ Home Check_新樓驗樓必check20點清單.txt';
+    a.href = 'EZ_Home_Check_Inspection_Checklist.pdf';
+    a.download = 'EZ_Home_Check_新樓驗樓清單.pdf';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
     closeChecklistModal();
   }
 
