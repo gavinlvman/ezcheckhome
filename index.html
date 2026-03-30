@@ -1919,12 +1919,44 @@
   function handleModalSubmit() {
     const name = document.getElementById('modalName').value.trim();
     const email = document.getElementById('modalEmail').value.trim();
+    
     if (!name || !email) {
       alert('請填寫姓名及電郵');
       return;
     }
-    document.getElementById('modalForm').style.display = 'none';
-    document.getElementById('modalDownload').style.display = 'block';
+
+    // 顯示處理中狀態
+    const submitBtn = document.querySelector('#modalForm .btn-orange');
+    const originalText = submitBtn.innerText;
+    submitBtn.innerText = '處理中...';
+    submitBtn.disabled = true;
+
+    // 準備提交到 Google Sheets 的數據
+    // 使用與主表單相同的 Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwqW0j6L_2kQSkFqiDHadLl17MFQcsYf-sv2OZ2TTV-l-sDrjWQ_dURn9X89w-PaD1isA/exec';
+    
+    // 構建 FormData，對應 Google Sheets 的欄位 ID
+    // 姓名: entry.384584834, 電郵: entry.413202818
+    // 我們將其他必填項填入固定值以區分來源
+    const formData = new FormData();
+    formData.append('entry.384584834', name);
+    formData.append('entry.413202818', email);
+    formData.append('entry.1989548003', 'N/A (Checklist Download)'); // 電話
+    formData.append('entry.1316035255', 'Checklist Download'); // 樓盤名稱
+    
+    // 使用 fetch 發送數據
+    fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+      .then(() => {
+        // 提交成功後切換到下載介面
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalDownload').style.display = 'block';
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        // 即使出錯也讓用戶下載，避免流失客戶
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalDownload').style.display = 'block';
+      });
   }
 
   function downloadChecklist() {
